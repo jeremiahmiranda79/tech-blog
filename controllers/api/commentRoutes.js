@@ -23,7 +23,6 @@ router.post('/', withAuth, async (req, res) => {
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 })
@@ -52,7 +51,6 @@ router.get('/', async (req, res) => {
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 })
@@ -82,7 +80,6 @@ router.get('/:commentId', async (req, res) => {
     } 
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });
@@ -99,7 +96,8 @@ router.put('/:commentId', withAuth, async (req, res) => {
                 id: req.params.commentId,
                 // comment must belong to user attempting to update it
                 ///// TODO: verify that comments belong to user attempting to update it (userId will come from req.session once we have set our sessions)
-                userId: req.session.userId
+                userId: req.session.userId,
+                // userName: req.session.userName
             }
         });
 
@@ -115,7 +113,6 @@ router.put('/:commentId', withAuth, async (req, res) => {
     } 
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });
@@ -147,7 +144,6 @@ router.delete('/:commentId', withAuth, async (req, res) => {
     } 
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 })

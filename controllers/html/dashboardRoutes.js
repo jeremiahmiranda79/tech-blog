@@ -29,14 +29,13 @@ router.get('/:userId', async (req, res) => {
 
         const serializedPosts = posts.map(post => post.get({ plain: true}));
 
-        console.log(serializedPosts)
+        ////console.log(serializedPosts)
 
         // TODO: modify response with actual VIEW|template
         res.status(200).send('<h1>DASHBOARD</h1><h2>Render the dashboard template view along with all posts from logged in user</h2>');
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });
@@ -76,13 +75,11 @@ router.get('/post/:id', async (req, res) => {
         }
 
         post = post.get({ plain: true});
-
         // TODO: modify response with actual VIEW|template
         res.status(200).send('<h1>DASHBOARD</h1><h2>Render the dashboard template view for a single post along with that post retrieved from the database</h2>');
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });

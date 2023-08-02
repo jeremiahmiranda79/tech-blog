@@ -1,0 +1,80 @@
+{{!-- WHEN I click on an existing blog post
+THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment --}}
+{{!-- <div>
+  <h1>BLOG POST</h1>
+  <br>
+
+  <h2>TITLE:</h2>
+  <p>{{post.title}}</p>
+
+  <h2>CONTENTS</h2>
+  <p style="color: brown;">{{post.text}}</p>
+
+  <h2>USER NAME</h2>
+  <p>{{post.user.username}}</p>
+
+  <h2>DATE CREATED</h2>
+  <p>{{post.createdAt}}</p>
+  <h2>LEAVE A COMMENT</h2>
+</div> --}}
+
+
+<div class="bg-white py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl lg:mx-0">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{post.title}}</h2>
+      <p class="mt-2 text-lg leading-8 text-gray-600">{{post.text}}</p>
+    </div>
+    <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+      <article class="flex max-w-xl flex-col items-start justify-between">
+        <div class="flex items-center gap-x-4 text-xs">
+          <time datetime="2020-03-16" class="text-gray-500">{{post.createdAt}}</time>
+          {{!-- <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Marketing</a> --}}
+        </div>
+        <div class="group relative">
+          {{!-- <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+            <a href="#">
+              <span class="absolute inset-0"></span>
+              Boost your conversion rate
+            </a>
+          </h3> --}}
+          {{!-- <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.</p> --}}
+        </div>
+        <div class="relative mt-8 flex items-center gap-x-4">
+          <img src="../assets/user.png" alt="" class="h-10 w-10 rounded-full bg-gray-50">
+          <div class="text-sm leading-6">
+            <p class="font-semibold text-gray-900">
+              <a href="#">
+                <span class="absolute inset-0"></span>
+                {{post.user.username}}
+              </a>
+            </p>
+            <p class="text-gray-600">Co-Founder / CTO</p>
+          </div>
+        </div>
+      </article>
+      <!-- More posts... -->
+    </div>
+    <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
+<textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave a comment..."></textarea>
+  </div>
+</div>
+
+{{!-- <div>
+    <p>{{title}}</p>
+    <p>{{text}}</p>
+    <p>{{username}}</p>
+    <p>{{createdAt}}</p>
+</div>
+{{#if loggedIn}}
+<div>
+    <textarea name="comment-body"
+        placeholder="Enter a comment here..."
+        cols="30"
+        rows="2">
+    </textarea>
+    <button type="submit">Add Comment</button>
+</div>
+{{/if}} --}}
+
+{{!-- TODO: finish --}}

@@ -18,7 +18,6 @@ router.post('/', withAuth, async (req, res) => {
         const newPost = await Post.create({
             title: req.body.title,
             text: req.body.text,
-
             ///// TODO: userId will come from req.sessions once we have set up our sessions
             //// userId: req.body.userId
             userId: req.session.userId
@@ -28,7 +27,6 @@ router.post('/', withAuth, async (req, res) => {
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });
@@ -54,7 +52,6 @@ router.get('/', async (req, res) => {
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });
@@ -68,7 +65,7 @@ router.get('/:postId', async (req, res) => {
             include: [
                 { model: User, attibutes: ['username'] },
                 { model: Comment, include: { model: User, attributes: ['username'] } },
-                ],
+            ],
             attributes: {
                 include: [
                     // use plain sql to get a count of the number of comments for each post
@@ -83,7 +80,6 @@ router.get('/:postId', async (req, res) => {
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });
@@ -105,7 +101,7 @@ router.put('/:postId', withAuth, async (req, res) => {
             }
         });
 
-        console.log(updatedPost)
+        //// console.log(updatedPost)
 
         if (!updatedPost[0]) {
             return res.status(406).json({ 
@@ -117,7 +113,6 @@ router.put('/:postId', withAuth, async (req, res) => {
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 })
@@ -138,7 +133,7 @@ router.delete('/:postId', withAuth, async (req, res) => {
             }
         });
 
-        console.log(deletedPost)
+        //// console.log(deletedPost)
 
         if (!deletedPost) {
             return res.status(406).json({
@@ -150,7 +145,6 @@ router.delete('/:postId', withAuth, async (req, res) => {
     } 
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 })

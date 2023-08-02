@@ -28,13 +28,11 @@ router.post('/', async (req, res) => {
             // create session variables based on the newly signed up user
             req.session.userId = newUser.id,
             req.session.loggedIn = true
-
             res.status(201).json(newUser) //! 201 - Created
         });    
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });
@@ -65,7 +63,6 @@ router.get('/', async (req, res) => {
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });
@@ -110,7 +107,6 @@ router.get('/profile', withAuth, async (req, res) => {
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });
@@ -150,7 +146,6 @@ router.get('/:userId', async (req, res) => {
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });
@@ -174,7 +169,7 @@ router.put('/profile', withAuth, async (req, res) => {
             }
         );
 
-        console.log(updatedUser)
+        //// console.log(updatedUser)
 
         if (!updatedUser[0]) {
             return res.status(404).json({
@@ -186,7 +181,6 @@ router.put('/profile', withAuth, async (req, res) => {
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });
@@ -221,7 +215,6 @@ router.delete('/profile', withAuth, async (req, res) => {
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });
@@ -239,7 +232,7 @@ router.delete('/:userId', async (req, res) => {
             }
         });
 
-        console.log(deletedUser)
+        ///// console.log(deletedUser)
 
         if (!deletedUser) {
             return res.status(404).json({
@@ -251,7 +244,6 @@ router.delete('/:userId', async (req, res) => {
     }
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });
@@ -286,14 +278,13 @@ router.post('/login', async (req, res) => {
         req.session.save(() => {
             // create session variable based on the logged in user
             req.session.userId = user.id;
+            req.session.userEmail = user.email;
             req.session.loggedIn = true;
-
             res.status(200).json(user); //! 200 - OK
         });
     } 
     catch (error) {
         console.log(error)
-
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 })
@@ -304,6 +295,8 @@ router.post('/login', async (req, res) => {
 // POST method with endpoint 'api/users/logout'
 router.post('/logout', async (req, res) => {
     if (req.session.loggedIn) {
+        req.session.loggedIn = false;
+
         req.session.destroy(() => {
             res.status(204).end(); //! 204 - No Content 
         });
