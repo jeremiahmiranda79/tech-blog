@@ -295,7 +295,7 @@ router.post('/login', async (req, res) => {
 // POST method with endpoint 'api/users/logout'
 router.post('/logout', async (req, res) => {
     if (req.session.loggedIn) {
-        req.session.loggedIn = false;
+        //req.session.loggedIn = false;
 
         req.session.destroy(() => {
             res.status(204).end(); //! 204 - No Content 

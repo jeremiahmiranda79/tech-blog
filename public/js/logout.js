@@ -1,5 +1,5 @@
 const logoutHandler = async () => {
-	comsole.log('hello world')
+	console.log('hello world')
 
 	const response = await fetch('/api/users/logout', {
 		method: 'POST',
