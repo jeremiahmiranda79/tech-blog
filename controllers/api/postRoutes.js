@@ -60,6 +60,9 @@ router.get('/', async (req, res) => {
 // route to retrieve a single post by id
 // GET method with endpoint '/api/posts/:postId'
 router.get('/:postId', async (req, res) => {
+
+    console.log('Random STRING')
+
     try {
         const post = await Post.findByPk(req.params.postId, {
             include: [
@@ -75,6 +78,8 @@ router.get('/:postId', async (req, res) => {
                 ]
             }
         });
+
+        console.log(post)
 
         res.status(200).json(post);
     }

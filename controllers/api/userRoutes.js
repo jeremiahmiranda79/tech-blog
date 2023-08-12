@@ -278,6 +278,7 @@ router.post('/login', async (req, res) => {
         req.session.save(() => {
             // create session variable based on the logged in user
             req.session.userId = user.id;
+            req.session.userName = user.username;
             req.session.userEmail = user.email;
             req.session.loggedIn = true;
             res.status(200).json(user); //! 200 - OK

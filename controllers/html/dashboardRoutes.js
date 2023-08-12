@@ -29,10 +29,13 @@ router.get('/:userId', async (req, res) => {
 
         const serializedPosts = posts.map(post => post.get({ plain: true}));
 
-        ////console.log(serializedPosts)
+        console.log(serializedPosts)
 
         // TODO: modify response with actual VIEW|template
-        res.status(200).send('<h1>DASHBOARD</h1><h2>Render the dashboard template view along with all posts from logged in user</h2>');
+        // res.status(200).send('<h1>DASHBOARD</h1><h2>Render the dashboard template view along with all posts from logged in user</h2>');
+        res.status(200).render('dashboard', {
+            
+        });
     }
     catch (error) {
         console.log(error)

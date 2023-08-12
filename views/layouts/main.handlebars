@@ -40,11 +40,13 @@
                                     class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
                                     aria-current="page">Home</a>
                             </li>
-
+                            {{#if loggedIn}}
                             <li>
-                                <a href="#"
+                                <a href="/dashboard"
+                                    id="dashboard"
                                     class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Dashboard</a>
                             </li>
+                            {{/if}}
 
                             <li>
                                 {{#if loggedIn}}
@@ -54,19 +56,8 @@
                                         id='logout'
                                         href="#">
                                         {{userId}}|logout                                
-                                    </a>
-                                    {{!-- <button class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" 
-                                    id="logout">
-                                    Logout
-                                    <H1>🍕| {{userId}}</H1> --}}
-                                    
+                                    </a>                              
                                 {{else}}
-                                    {{!-- <a 
-                                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                                        id='logout'
-                                        href="/">
-                                        {{userId}}|logout                                
-                                    </a> --}}
                                     <a 
                                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                                         id="login"
@@ -74,16 +65,6 @@
                                         Login
                                     </a>
                                     <img src="../assets/user.png" alt="" class="h-10 w-10 rounded-full bg-gray-50">
-                                    {{!-- <a 
-                                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                                        id='logout'
-                                        href="/">
-                                        {{userId}}|logout                                
-                                    </a> --}}
-                                    {{!-- <button class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" 
-                                    id="logout">
-                                    Logout
-                                    <H1>🍕| {{userId}}</H1> --}}
                                 {{/if}}
                             </li>
                             
@@ -118,5 +99,6 @@
 
         <script src="/js/logout.js"></script>
         <script src="/js/login.js"></script>
+        {{!-- <script src="/js/comment.js"></script>  --}}
     </body>
 </html>

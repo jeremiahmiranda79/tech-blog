@@ -11,10 +11,14 @@ const withAuth = require('../../utils/auth');
 // test with: {"text": "This is text for the new comment", "postId": 18}
 ///// TODO: Authenticate - only authenticated users can create a post
 router.post('/', withAuth, async (req, res) => {
+
+    console.log(req.body)
+
     try {
         const newComment = await Comment.create({
-            text: req.body.text,
-            postId: req.body.postId,
+            // text: req.body.text,
+            ...req.body,
+            // postId: req.body.postId,
             ///// TODO: userId will come from req.session once we have set up our sessions
             userId: req.session.userId
         });

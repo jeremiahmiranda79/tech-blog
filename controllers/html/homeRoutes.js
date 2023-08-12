@@ -75,7 +75,7 @@ router.get('/post/:id', async (req, res) => {
         res.render('blogpost', {
             //...sequelizedPost
             post: sequelizedPost,
-            //loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn
         });
     } 
     catch (error) {
