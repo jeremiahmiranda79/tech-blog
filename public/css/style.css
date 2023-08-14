@@ -1,4 +1,4 @@
-/* :root {
+:root {
 	--roboto: 'Roboto', sans-serif;
 	--monoton: 'Monoton', cursive;
 	--dark: #00061c;
@@ -11,14 +11,14 @@
 }
 
 /* main.handlebars */
-/* body {
-	background-color: var(--dark)!important;
-	color: var(--light);
-	font-family: var(--roboto);
-	background-image: url(../assets/background-image.jpg);
-	background-position: right;
-	background-size: cover;
-	background-repeat: no-repeat;
+body {
+	/* background-color: var(--dark)!important; */
+	/* color: var(--light); */
+	/* font-family: var(--roboto); */
+	/* background-image: url(../assets/background-image.jpg); */
+	/* background-position: right; */
+	/* background-size: cover; */
+	/* background-repeat: no-repeat; */
 }
 
 .wrapper {
@@ -27,18 +27,18 @@
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-} */
+}
 
 footer { 
 	/* push footer to the bottom of the page */
-	/* margin-top: auto; */
+	margin-top: auto;
 }
 
-/* .navbar-custom .navbar-brand {
+.navbar-custom .navbar-brand {
 	font-family: var(--monoton);
 	color: var(--blue);
 }
 
 .navbar-custom .navbar-brand:hover {
 	color: var(--turquoise);
-} */ 
+} 

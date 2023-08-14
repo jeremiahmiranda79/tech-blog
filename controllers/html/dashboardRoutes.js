@@ -1,14 +1,10 @@
 const router = require('express').Router();
-
 // import our db connection for the SQL literals
 const sequelize = require('../../config/connection');
-
 const { Post, User, Comment } = require('../../models');
 
 // Render dashboard with all posts ever created by the user logged in
 // Endpoint is '/dashboard/:userId'
-// TODO: only authenticated users can access their dashboard
-// TODO: once we have set up our sessions, remove ':userId' from endpoint and userId from req.sessions instead
 router.get('/:userId', async (req, res) => {
     try {
         const posts = await Post.findAll({
@@ -29,12 +25,8 @@ router.get('/:userId', async (req, res) => {
 
         const serializedPosts = posts.map(post => post.get({ plain: true}));
 
-        console.log(serializedPosts)
-
-        // TODO: modify response with actual VIEW|template
-        // res.status(200).send('<h1>DASHBOARD</h1><h2>Render the dashboard template view along with all posts from logged in user</h2>');
         res.status(200).render('dashboard', {
-            
+            posts: serializedPosts
         });
     }
     catch (error) {
@@ -86,5 +78,43 @@ router.get('/post/:id', async (req, res) => {
         res.status(500).json(error); //! 500 - Internal Server Error
     }
 });
+
+router.put('/post', async (req, res) => {
+    try {
+        let newPost = await Post.get({
+            where: {
+                // id: req.params.id,
+                userId: req.session.userId
+            },
+            include: [
+                {
+                     model: Post,
+                     include: {
+                        model: User,
+                        attributes: ['username']
+                     }    
+                }
+            ],
+        });
+
+        if (!newPost) {
+            return res.status(404).json({ message: 'No post found'})
+        }
+
+        const serializedPosts = newPost.get({ plain: true});
+
+        res.status(200).render('/post', {
+            posts: serializedPosts,
+            loggedIn: req.session.loggedIn,
+            userId: req.session.userId
+        });
+
+        console.log(req.session);
+    }
+    catch (error) {
+        console.log(error)
+        res.status(500).json(error); //! 500 - Internal Server Error
+    }
+})
 
 module.exports = router;
