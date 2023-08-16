@@ -12,13 +12,13 @@
 
 /* main.handlebars */
 body {
-	/* background-color: var(--dark)!important; */
+	background-color: var(--dark)!important;
 	/* color: var(--light); */
-	/* font-family: var(--roboto); */
-	/* background-image: url(../assets/background-image.jpg); */
-	/* background-position: right; */
-	/* background-size: cover; */
-	/* background-repeat: no-repeat; */
+	font-family: var(--roboto);
+	background-image: url(../assets/chocolate.jpg);
+	background-position: right;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .wrapper {

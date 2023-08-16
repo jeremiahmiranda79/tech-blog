@@ -5,10 +5,8 @@ const withAuth = require('../../utils/auth');
 //! CREATE !//
 // route to create a new comment
 // POST method with endpoint '/api/comments'
-// test with: {"text": "This is text for the new comment", "postId": 18}
+// test with: {"text": "This is text for the new comment", "postId": 1}
 router.post('/', withAuth, async (req, res) => {
-    console.log(req.body)
-
     try {
         const newComment = await Comment.create({
             ...req.body,
@@ -115,10 +113,10 @@ router.put('/:commentId', withAuth, async (req, res) => {
 router.delete('/:commentId', withAuth, async (req, res) => {
     try {
         const deletedComment = await Comment.destroy({
+            // verify that comments belong to user attempting to delete it
             where: 
             { 
                 id: req.params.commentId, 
-                // verify that comments belong to user attempting to delete it
                 userId: req.session.userId
             }
         });

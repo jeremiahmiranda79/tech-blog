@@ -12,15 +12,21 @@
                     Date
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Number of Posts
+                    Number of Comments
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Action
+                    Read
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Update
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Delete
                 </th>
             </tr>
         </thead>
         <tbody>
-          {{#each posts}}
+          {{#each posts as |post|}}
             <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{title}}
@@ -37,25 +43,47 @@
                 <td class="px-6 py-4">
                   <a href="/post/{{id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Read Post</a>
                 </td>
+                <td class="px-6 py-4">
+                  <a href="/post/{{id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Update Post</a>
+                </td>
+                <td class="px-6 py-4">
+                  {{!-- <a href="/post/{{postId}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" data-id="{{post.id}}">Delete Post</a> --}}
+                  <button class="btn btn-sm btn-danger" id="delete" data-id="{{postId}}">DELETE</button>
+                </td>
+                {{!-- <div class="col-md-4">
+                <button class="btn btn-sm btn-danger" id="project-list" data-id="{{post.id}}">DELETE</button> --}}
+      </div>
+                
             </tr>
           {{/each}}
         </tbody>
     </table>
 
-
     <form id='post-form'>
-				<label
-					for='post-message'
-					class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-				>Your message</label>
-				<textarea
-					name='post-body'
-					id='message'
-					rows='4'
-					class='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-					placeholder='Leave a post...'
-				></textarea>
-				{{!-- <button id='post-submit' type='submit'>Add Post</button> --}}
-                <a href="/post">Post</a>
-			</form>
+        <label
+            for='post-title'
+            class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+        >Your title</label>
+        <textarea
+            name='post-title'
+            id='title'
+            rows='1'
+            class='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            placeholder='Leave a post title...'
+        ></textarea>
+        <label
+            for='post-body'
+            class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+        >Your title</label>
+        <textarea
+            name='post-body'
+            id='post-message'
+            rows='4'
+            class='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            placeholder='Leave a post message...'
+        ></textarea>
+        <button id='post-submit' type='submit'>Add Post</button>
+	</form>
 </div>  
+
+<script src='/js/post.js'></script>

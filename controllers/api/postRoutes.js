@@ -10,6 +10,7 @@ const withAuth = require('../../utils/auth');
 // POST method with endpoint '/api/posts'
 // test with: {"title": "Test title for a new post", "text": "This is text for the new post"}
 router.post('/', withAuth, async (req, res) => {
+    console.log("Posting!!!")
     try {
         const newPost = await Post.create({
             title: req.body.title,
@@ -115,8 +116,8 @@ router.delete('/:postId', withAuth, async (req, res) => {
     try {
         const deletedPost = await Post.destroy({
             where: {
-                id: req.params.postId,
                 // verify that post belongs to user attempting to delete it
+                id: req.params.postId,
                 userId: req.session.userId
             }
         });

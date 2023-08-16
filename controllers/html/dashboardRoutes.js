@@ -79,42 +79,4 @@ router.get('/post/:id', async (req, res) => {
     }
 });
 
-router.put('/post', async (req, res) => {
-    try {
-        let newPost = await Post.get({
-            where: {
-                // id: req.params.id,
-                userId: req.session.userId
-            },
-            include: [
-                {
-                     model: Post,
-                     include: {
-                        model: User,
-                        attributes: ['username']
-                     }    
-                }
-            ],
-        });
-
-        if (!newPost) {
-            return res.status(404).json({ message: 'No post found'})
-        }
-
-        const serializedPosts = newPost.get({ plain: true});
-
-        res.status(200).render('/post', {
-            posts: serializedPosts,
-            loggedIn: req.session.loggedIn,
-            userId: req.session.userId
-        });
-
-        console.log(req.session);
-    }
-    catch (error) {
-        console.log(error)
-        res.status(500).json(error); //! 500 - Internal Server Error
-    }
-})
-
 module.exports = router;
